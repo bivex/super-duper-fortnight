@@ -1,0 +1,100 @@
+# Godot Smell Analyzer Configuration - Studio Level (Professional Game Studios)
+# Strict thresholds for enterprise/professional game development
+# Enforces high code quality standards and maintainability
+
+thresholds:
+  # Long Method detector - Enterprise standards
+  maxLines: 45          # Strict method length limit
+  maxComplexity: 10     # Low complexity tolerance
+  maxYields: 5          # Minimal async operations per method
+
+  # Large Class detector - Strong separation of concerns
+  maxFields: 12         # Strict field limit
+  maxMethods: 15        # Focused class responsibilities
+  maxLOC: 300          # Strict LOC limit
+  maxExports: 8         # Minimal exported variables
+
+  # Duplicate Code detector - Aggressive detection
+  similarityThreshold: 4  # Very sensitive detection
+  minLines: 3           # Small blocks considered
+  minSimilarity: 0.7    # High similarity required
+
+  # Long Parameter List - Professional limit
+  maxParameters: 4      # Minimal parameters
+
+  # Divergent Change - Single responsibility principle
+  maxResponsibilities: 2 # Very strict SRP enforcement
+
+  # Primitive Obsession - Quality first
+  maxMagicNumbers: 3    # Very few magic numbers allowed
+  maxMagicStrings: 4    # Minimal hardcoded strings
+  maxStringGetNodes: 2  # Strongly discourage string access
+  maxUntypedVars: 1     # Encourage strong typing
+
+  # Switch Statements - Prefer polymorphism
+  maxCases: 6           # Small switch statements only
+
+  # Comments detector - Clean code philosophy
+  maxCommentDensity: 0.25 # Low comment density preferred
+  minLOCForComments: 20   # Comments on small methods
+
+  # Speculative Generality - YAGNI principle
+  unusedMethods: 0      # No unused methods allowed
+  unusedParameters: 0   # No unused parameters allowed
+
+# Enabled detectors - All enabled with strict monitoring
+enabledDetectors:
+  - LongMethod
+  - LargeClass
+  - DuplicateCode
+  - LongParameterList
+  - DivergentChange
+  - ShotgunSurgery
+  - FeatureEnvy
+  - DataClumps
+  - PrimitiveObsession
+  - SwitchStatements
+  - LazyClass
+  - SpeculativeGenerality
+  - TemporaryField
+  - MessageChains
+  - MiddleMan
+  - InappropriateIntimacy
+  - DataClass
+  - RefusedBequest
+  - Comments
+  - GlobalState
+
+# Output configuration
+output:
+  format: json         # Structured output for CI/CD
+  directory: ./analysis-results
+  includeDetails: true
+  groupBySeverity: true # Group by severity for review
+
+# Analysis configuration
+analysis:
+  includeTests: false    # Skip test files
+  includeGenerated: false # Skip generated code
+  maxFileSize: 5000     # Smaller files for maintainability
+
+# Quality gates (strict enforcement)
+qualityGates:
+  maxCriticalSmells: 0      # Zero tolerance for critical issues
+  maxHighSmellsPerFile: 1   # Maximum 1 high-severity smell per file
+  maxMediumSmellsPerFile: 3 # Maximum 3 medium-severity smells per file
+  maxTotalSmells: 20        # Strict overall project limit
+  maxComplexityAverage: 8   # Average complexity limit per project
+
+# CI/CD integration
+ci:
+  failOnQualityGate: true   # Fail builds on quality gate violations
+  generateReport: true      # Always generate detailed reports
+  uploadResults: true       # Upload results to quality dashboard
+
+# Team standards
+standards:
+  requireTypes: true        # Enforce type hints where possible
+  maxInheritanceDepth: 3    # Limit inheritance depth
+  preferComposition: true   # Prefer composition over inheritance
+  documentationRequired: true # Require documentation for public APIs

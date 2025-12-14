@@ -1,0 +1,85 @@
+# Godot Smell Analyzer Configuration - Senior Level (Experienced Developers)
+# Balanced thresholds for experienced developers
+# Encourages good practices while allowing some flexibility for complex business logic
+
+thresholds:
+  # Long Method detector - Professional standards
+  maxLines: 60          # Reasonable method length
+  maxComplexity: 12     # Moderate complexity limit
+  maxYields: 8          # Controlled async operations
+
+  # Large Class detector - Encourage separation of concerns
+  maxFields: 15         # Limit fields for better encapsulation
+  maxMethods: 20        # Encourage focused classes
+  maxLOC: 400          # Standard LOC limit
+  maxExports: 10        # Limit exported variables
+
+  # Duplicate Code detector - Strict detection
+  similarityThreshold: 5  # Lower threshold for detection
+  minLines: 4           # Smaller blocks considered
+  minSimilarity: 0.65   # Higher similarity required
+
+  # Long Parameter List - Professional limit
+  maxParameters: 6      # Standard parameter limit
+
+  # Divergent Change - Quality focused
+  maxResponsibilities: 3 # Strict single responsibility
+
+  # Primitive Obsession - Quality oriented
+  maxMagicNumbers: 5    # Limit magic numbers
+  maxMagicStrings: 6    # Reduce hardcoded strings
+  maxStringGetNodes: 3  # Minimize string-based access
+  maxUntypedVars: 3     # Encourage type safety
+
+  # Switch Statements - Professional limit
+  maxCases: 8           # Reasonable switch size
+
+  # Comments detector - Professional standard
+  maxCommentDensity: 0.4  # Balanced comment density
+  minLOCForComments: 30   # Comments on moderate methods
+
+  # Speculative Generality - Pragmatic approach
+  unusedMethods: 2      # Minimize unused code
+  unusedParameters: 1   # Strict parameter usage
+
+# Enabled detectors - All enabled for comprehensive analysis
+enabledDetectors:
+  - LongMethod
+  - LargeClass
+  - DuplicateCode
+  - LongParameterList
+  - DivergentChange
+  - ShotgunSurgery
+  - FeatureEnvy
+  - DataClumps
+  - PrimitiveObsession
+  - SwitchStatements
+  - LazyClass
+  - SpeculativeGenerality
+  - TemporaryField
+  - MessageChains
+  - MiddleMan
+  - InappropriateIntimacy
+  - DataClass
+  - RefusedBequest
+  - Comments
+  - GlobalState
+
+# Output configuration
+output:
+  format: json         # Structured output
+  directory: ./analysis-results
+  includeDetails: true
+  groupBySeverity: true # Group by severity for senior review
+
+# Analysis configuration
+analysis:
+  includeTests: false    # Skip test files
+  includeGenerated: false # Skip generated code
+  maxFileSize: 10000    # Maximum file size
+
+# Quality gates (optional)
+qualityGates:
+  maxCriticalSmells: 0    # No critical smells allowed
+  maxHighSmellsPerFile: 3 # Limit high-severity smells per file
+  maxTotalSmells: 50      # Overall project limit

@@ -1,0 +1,79 @@
+# Godot Smell Analyzer Configuration - Middle Level (Intermediate Developers)
+# More lenient thresholds suitable for junior to intermediate developers
+# Focus on major issues while allowing some flexibility for learning
+
+thresholds:
+  # Long Method detector - More lenient for learning
+  maxLines: 80          # Allow longer methods during development
+  maxComplexity: 15     # Higher complexity tolerance
+  maxYields: 10         # Allow more async operations
+
+  # Large Class detector - Relaxed for feature development
+  maxFields: 20         # Allow more fields
+  maxMethods: 25        # Allow more methods
+  maxLOC: 500          # Higher LOC limit
+  maxExports: 15        # More exported variables allowed
+
+  # Duplicate Code detector - Standard detection
+  similarityThreshold: 6  # Minimum identical lines
+  minLines: 5           # Minimum block size
+  minSimilarity: 0.6    # Similarity ratio
+
+  # Long Parameter List - More tolerant
+  maxParameters: 8      # Allow more parameters
+
+  # Divergent Change - Standard
+  maxResponsibilities: 5 # Number of different reasons to change
+
+  # Primitive Obsession - Moderate
+  maxMagicNumbers: 8    # Allow more magic numbers
+  maxMagicStrings: 10   # Allow more hardcoded strings
+  maxStringGetNodes: 5  # More string-based node access
+  maxUntypedVars: 5     # Allow some untyped variables
+
+  # Switch Statements - More lenient
+  maxCases: 12          # Allow larger switch statements
+
+  # Comments detector - Learning friendly
+  maxCommentDensity: 0.6  # Higher comment density allowed
+  minLOCForComments: 50   # Require comments on smaller methods
+
+  # Speculative Generality - Development friendly
+  unusedMethods: 5      # Allow some unused methods
+  unusedParameters: 3   # Allow some unused parameters
+
+# Enabled detectors - All enabled for comprehensive feedback
+enabledDetectors:
+  - LongMethod
+  - LargeClass
+  - DuplicateCode
+  - LongParameterList
+  - DivergentChange
+  - ShotgunSurgery
+  - FeatureEnvy
+  - DataClumps
+  - PrimitiveObsession
+  - SwitchStatements
+  - LazyClass
+  - SpeculativeGenerality
+  - TemporaryField
+  - MessageChains
+  - MiddleMan
+  - InappropriateIntimacy
+  - DataClass
+  - RefusedBequest
+  - Comments
+  - GlobalState
+
+# Output configuration
+output:
+  format: json         # Structured output for analysis
+  directory: ./analysis-results  # Results directory
+  includeDetails: true  # Include detailed information
+  groupBySeverity: false # Don't group by severity
+
+# Analysis configuration
+analysis:
+  includeTests: false    # Skip test files
+  includeGenerated: false # Skip generated code
+  maxFileSize: 10000    # Maximum file size to analyze

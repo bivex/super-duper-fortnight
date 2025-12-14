@@ -1,0 +1,132 @@
+# Sample configuration file for GDScript Code Smell Analyzer
+# Based on Z-specification thresholds and defaults
+
+# Threshold settings for code smell detection
+thresholds:
+  # Long Method detector
+  maxLines: 50          # Maximum lines per method
+  maxComplexity: 10     # Maximum cyclomatic complexity
+  maxYields: 7          # Maximum yield/await statements
+
+  # Large Class detector
+  maxFields: 15         # Maximum fields per class
+  maxMethods: 20        # Maximum methods per class
+  maxLOC: 400          # Maximum lines of code per class
+  maxExports: 10        # Maximum exported variables
+
+  # Duplicate Code detector
+  similarityThreshold: 6  # Minimum identical lines for duplication
+  minLines: 5           # Minimum lines for code block consideration
+  minSimilarity: 0.6    # Minimum similarity ratio (0.0-1.0)
+
+  # Long Parameter List detector
+  maxParams: 4          # Maximum parameters per method
+  maxRelatedParams: 3   # Maximum related parameters
+
+  # Divergent Change detector
+  maxReasons: 3         # Maximum change reasons per class
+
+  # Shotgun Surgery detector
+  maxClasses: 3         # Maximum classes affected by one change
+
+  # Feature Envy detector
+  envyRatio: 2.0        # Ratio of foreign to local field access
+
+  # Data Clumps detector
+  minClumpSize: 3       # Minimum variables in a clump
+  minOccurrences: 3     # Minimum occurrences of the clump
+
+  # Primitive Obsession detector
+  maxMagicNumbers: 5    # Maximum magic numbers per class
+  maxMagicStrings: 5    # Maximum magic strings per class
+  maxStringGetNodes: 3  # Maximum get_node("string") calls
+  maxUntypedVars: 3     # Maximum untyped variables
+
+  # Switch Statements detector
+  maxSwitches: 2        # Maximum switch constructs per method
+  maxCases: 5           # Maximum cases per switch
+
+  # Lazy Class detector
+  minLOC: 20            # Minimum LOC for a class to be useful
+  minMethods: 2         # Minimum methods per class
+  minResponsibilities: 1 # Minimum responsibilities
+
+  # Speculative Generality detector
+  unusedMethods: 0      # Unused methods threshold
+  unusedParameters: 0   # Unused parameters threshold
+
+  # Temporary Field detector
+  conditionalUsage: false # Whether field is used conditionally
+  nullChecks: 0         # Number of null checks for the field
+
+  # Message Chains detector
+  maxChainLength: 3     # Maximum length of call chains
+
+  # Middle Man detector
+  maxDelegationRatio: 0.5 # Maximum delegation ratio
+
+  # Inappropriate Intimacy detector
+  bidirectionalDependency: false # Whether classes depend on each other
+  sharedIntimacy: 0     # Number of shared private accesses
+
+  # Data Class detector
+  behaviorMethods: 0    # Number of behavior methods
+  publicFields: 0       # Number of public fields
+
+  # Refused Bequest detector
+  usageRatio: 0.3       # Minimum inheritance usage ratio
+  overriddenEmpty: 0    # Number of empty overridden methods
+
+  # Comments detector
+  maxCommentDensity: 0.5 # Maximum comment density ratio
+
+  # Global State detector
+  maxAutoloads: 5       # Maximum number of autoloads
+  maxGlobalVars: 20     # Maximum global variables
+
+# Enabled detectors (uncomment to enable/disable specific detectors)
+enabledDetectors:
+  - LongMethod
+  - LargeClass
+  - DuplicateCode
+  - LongParameterList
+  - DivergentChange
+  - ShotgunSurgery
+  - FeatureEnvy
+  - DataClumps
+  - PrimitiveObsession
+  - SwitchStatements
+  - LazyClass
+  - SpeculativeGenerality
+  - TemporaryField
+  - MessageChains
+  - MiddleMan
+  - InappropriateIntimacy
+  - DataClass
+  - RefusedBequest
+  - Comments
+  - GlobalState
+  # - LongParameterList
+  # - DivergentChange
+  # - ShotgunSurgery
+  # - FeatureEnvy
+  # - DataClumps
+  # - PrimitiveObsession
+  # - SwitchStatements
+  # - LazyClass
+  # - SpeculativeGenerality
+  # - TemporaryField
+  # - MessageChains
+  # - MiddleMan
+  # - InappropriateIntimacy
+  # - DataClass
+  # - RefusedBequest
+  # - Comments
+  # - GlobalState
+
+# Output configuration
+output:
+  format: json         # Output format: json, txt, or html
+  directory: ./analysis-results  # Output directory
+  includeDetails: true  # Include detailed information in reports
+  groupBySeverity: false # Group results by severity level
